@@ -1,3 +1,11 @@
 .right {
   text-align: right;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+textarea.size-fix {
+  resize: none;
+}

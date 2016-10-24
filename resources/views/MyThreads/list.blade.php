@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         @foreach($threads as $thread)
-        <tr>
+        <tr class='pointer' onclick="location.href='/thread/detail/{{{ $thread->id }}}'">
           <td>{{{ $thread->title }}}</td>
           <td>{{{ $thread->created_at }}}</td>
           <td>1</td>
