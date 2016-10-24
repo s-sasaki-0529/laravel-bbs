@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MyThread;
+use App\Writing;
 use App\Http\Requests;
 
 class MyThreadsController extends Controller
@@ -14,15 +15,26 @@ class MyThreadsController extends Controller
       $this->thread = $thread;
     }
 
+    /* スレッド一覧ページを表示 */
     public function getThreadList () {
       $threads = $this->thread->all();
       return view('MyThreads.list')->with(compact('threads'));
     }
 
+    /* スレッド内容を表示 */
+    public function getThreadpage ($id) {
+      $thread = $this->thread->find($id);
+      $writings = Writing::where('thread_id' , $id)->get();
+      return view('MyThreads.content' , compact('thread' , 'writings'));
+    }
+
+    /* スレッド新規作成ページを表示 */
     public function getCreateThreadPage () {
       return view('MyThreads.create');
     }
 
-    public function createThread () {
+    /* スレッドを新規作成 */
+    public function createThread (Request $request) {
     }
+
 }

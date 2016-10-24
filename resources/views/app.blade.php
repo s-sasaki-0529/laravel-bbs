@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <div class="row">
-        <h1>MyBBS</h1>
+        <h1><a href="/">MyBBS</a></h1>
         <div class="col-md-12">
           @yield('content')
         </div>

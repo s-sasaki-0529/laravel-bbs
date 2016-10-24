@@ -9,3 +9,17 @@
 textarea.size-fix {
   resize: none;
 }
+
+.thread-content {
+  padding-bottom: 20px;
+}
+
+.writing-name {
+  font-size: 24px;
+  color: green;
+}
+
+.writing-body {
+  font-size: 18px;
+  padding: 10px 0px 0px 10px;
+}
