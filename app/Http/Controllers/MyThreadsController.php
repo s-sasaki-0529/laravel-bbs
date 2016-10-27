@@ -37,10 +37,9 @@ class MyThreadsController extends Controller
     public function createThread (Request $request) {
       $this->validate($request , ['title' => 'required' , 'name' => 'required' , 'body' => 'required']);
       $data = $request->all();
-      $thread_data = array('title' => $data['title']);
-      $this->thread->fill($thread_data);
-      $this->thread->save();
-      $this->insertWriting($this->thread->id , $data['name'] , $data['body']);
+      $this->thread->insert($data['title']);
+      $writing = new Writing;
+      $writing->insert($this->thread->id , $data['name'] , $data['body']);
       return redirect()->to('/thread/detail/' . $this->thread->id);
     }
 
@@ -48,15 +47,8 @@ class MyThreadsController extends Controller
     public function createWriting (Request $request , $id) {
       $this->validate($request , ['name' => 'required' , 'body' => 'required']);
       $data = $request->all();
-      $this->insertWriting((int)$id , $data['name'] , $data['body']);
+      $writing = new Writing;
+      $writing->insert((int)$id , $data['name'] , $data['body']);
       return redirect()->to('/thread/detail/' . $id);
     }
-
-    /* 書き込みを投稿する */
-    public function insertWriting ($thread_id , $name , $body) {
-      $writing = new Writing;
-      $writing->fill(compact('thread_id' , 'name' , 'body'));
-      $writing->save();
-    }
-
 }
