@@ -37,4 +37,14 @@ class MyThreadsController extends Controller
     public function createThread (Request $request) {
     }
 
+    /* スレッドに書き込みを投稿 */
+    public function createWriting (Request $request , $id) {
+      $data = $request->all();
+      $data['thread_id'] = (int)$id;
+      $writing = new Writing;
+      $writing->fill($data);
+      $writing->save();
+      return redirect()->to('/thread/detail/' . $id);
+    }
+
 }

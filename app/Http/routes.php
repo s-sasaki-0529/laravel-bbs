@@ -9,3 +9,6 @@ Route::Post('/thread/create' , 'MyThreadsController@createThread');
 
 /* スレッド詳細 */
 Route::Get('/thread/detail/{id}' , 'MyThreadsController@getThreadPage');
+
+/* スレッドに書き込み */
+Route::Post('/thread/detail/{id}' , 'MyThreadsController@createWriting');

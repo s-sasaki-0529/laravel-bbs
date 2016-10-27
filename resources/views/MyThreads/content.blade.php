@@ -14,7 +14,7 @@
   <form method="POST">
     <div class='form-group'>
       <label class='control-label'>お名前</label>
-      <input class='form-control' type='input' name='title' id='title'>
+      <input class='form-control' type='input' name='name' id='name'>
     </div>
     <div class='form-group'>
       <label class='control-label'>本文</label>
