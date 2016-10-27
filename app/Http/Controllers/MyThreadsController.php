@@ -39,21 +39,22 @@ class MyThreadsController extends Controller
       $thread_data = array('title' => $data['title']);
       $this->thread->fill($thread_data);
       $this->thread->save();
-      $writing = new Writing;
-      $writing_data = array('thread_id' => $this->thread->id , 'name' => $data['name'] , 'body' => $data['body']);
-      $writing->fill($writing_data);
-      $writing->save();
+      $this->insertWriting($this->thread->id , $data['name'] , $data['body']);
       return redirect()->to('/thread/detail/' . $this->thread->id);
     }
 
     /* スレッドに書き込みを投稿 */
     public function createWriting (Request $request , $id) {
       $data = $request->all();
-      $data['thread_id'] = (int)$id;
-      $writing = new Writing;
-      $writing->fill($data);
-      $writing->save();
+      $this->insertWriting((int)$id , $data['name'] , $data['body']);
       return redirect()->to('/thread/detail/' . $id);
+    }
+
+    /* 書き込みを投稿する */
+    public function insertWriting ($thread_id , $name , $body) {
+      $writing = new Writing;
+      $writing->fill(compact('thread_id' , 'name' , 'body'));
+      $writing->save();
     }
 
 }
