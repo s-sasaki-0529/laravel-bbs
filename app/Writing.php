@@ -14,4 +14,10 @@ class Writing extends Model
       $this->fill(compact('thread_id' , 'name' , 'body'));
       $this->save();
     }
+
+    /* 特定のレコードを削除 */
+    public function deleteById ($id) {
+      $target = $this->find($id);
+      $target->delete;
+    }
 }

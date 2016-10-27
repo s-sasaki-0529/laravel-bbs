@@ -14,4 +14,10 @@ class MyThread extends Model
       $this->fill(compact('title'));
       $this->save();
     }
+
+    /* 特定のレコードを削除 */
+    public function deleteById($id) {
+      $target = $this->find($id);
+      $target->delete();
+    }
 }
