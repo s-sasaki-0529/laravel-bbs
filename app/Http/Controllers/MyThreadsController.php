@@ -35,6 +35,7 @@ class MyThreadsController extends Controller
 
     /* スレッドを新規作成 */
     public function createThread (Request $request) {
+      $this->validate($request , ['title' => 'required' , 'name' => 'required' , 'body' => 'required']);
       $data = $request->all();
       $thread_data = array('title' => $data['title']);
       $this->thread->fill($thread_data);
@@ -45,6 +46,7 @@ class MyThreadsController extends Controller
 
     /* スレッドに書き込みを投稿 */
     public function createWriting (Request $request , $id) {
+      $this->validate($request , ['name' => 'required' , 'body' => 'required']);
       $data = $request->all();
       $this->insertWriting((int)$id , $data['name'] , $data['body']);
       return redirect()->to('/thread/detail/' . $id);
