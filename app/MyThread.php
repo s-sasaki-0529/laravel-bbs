@@ -19,5 +19,6 @@ class MyThread extends Model
     public function deleteById($id) {
       $target = $this->find($id);
       $target->delete();
+      Writing::where('thread_id' , $id)->delete();
     }
 }
