@@ -4,6 +4,7 @@
   <div class='thread-content'>
     @foreach ($writings as $writing)
     <div class='thread-writing'>
+      <span class='writing-number'>{{ $writing->number }}</span>.
       <span class='writing-name'>{{ $writing->name }}</span>
       <span class='writing-datetime'>({{ $writing->created_at }})</span>
       <div class='writing-body'>{{ $writing->body }}</div>

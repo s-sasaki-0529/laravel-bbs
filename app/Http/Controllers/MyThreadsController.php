@@ -24,7 +24,7 @@ class MyThreadsController extends Controller
     /* スレッド内容を表示 */
     public function getThreadpage ($id) {
       $thread = $this->thread->find($id);
-      $writings = Writing::where('thread_id' , $id)->get();
+      $writings = (new Writing)->getByThreadId($id);
       return view('MyThreads.content' , compact('thread' , 'writings'));
     }
 
