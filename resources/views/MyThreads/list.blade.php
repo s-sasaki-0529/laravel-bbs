@@ -1,6 +1,7 @@
 @extends('app')
   @section('content')
     <h2 class="page-header">スレッド一覧</h2>
+    @if (count($threads) > 0 )
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -24,5 +25,8 @@
         @endforeach
       </tbody>
     </table>
+    @else
+    <p>スレッドがありません</p>
+    @endif
     <p class='right'><a href="/thread/create">新規スレッド作成</a></p>
   @endsection
