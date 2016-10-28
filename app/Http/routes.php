@@ -12,3 +12,6 @@ Route::Get('/thread/detail/{id}' , 'MyThreadsController@getThreadPage');
 
 /* スレッドに書き込み */
 Route::Post('/thread/detail/{id}' , 'MyThreadsController@createWriting');
+
+/* スレッド削除 */
+Route::Post('/thread/delete/{id}' , 'MyThreadsController@deleteThread');

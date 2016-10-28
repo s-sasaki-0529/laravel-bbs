@@ -51,4 +51,10 @@ class MyThreadsController extends Controller
       $writing->insert((int)$id , $data['name'] , $data['body']);
       return redirect()->to('/thread/detail/' . $id);
     }
+
+    /* スレッドを削除 */
+    public function deleteThread ($id) {
+      $this->thread->deleteById($id);
+      return redirect()->to('/');
+    }
 }
