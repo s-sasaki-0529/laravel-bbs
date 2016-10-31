@@ -12,13 +12,13 @@
       </thead>
       <tbody>
         @foreach($threads as $thread)
-        <tr class='pointer' onclick="location.href='/thread/detail/{{{ $thread->id }}}'">
-          <td>{{ $thread->title }}</td>
+        <tr>
+          <td class='pointer' onclick="location.href='/thread/detail/{{ $thread->id }}'">{{ $thread->title }}</td>
           <td>{{ $thread->created_at }}</td>
           <td>{{ $thread->writingsCount }}</td>
           <td>
             <form method="POST" action="/thread/delete/{{ $thread->id }}">
-              <button type="submit" class='btn btn-default btn-xs'>削除</button>
+              <button type="submit" onclick="return confirm('スレッドを削除します。よろしいですか？')" class='btn btn-default btn-xs'>削除</button>
             </form>
           </td>
         </tr>
