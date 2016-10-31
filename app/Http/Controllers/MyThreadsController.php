@@ -17,7 +17,7 @@ class MyThreadsController extends Controller
 
     /* スレッド一覧ページを表示 */
     public function getThreadList () {
-      $threads = $this->thread->all();
+      $threads = $this->thread->allWithWritingsCount();
       return view('MyThreads.list')->with(compact('threads'));
     }
 

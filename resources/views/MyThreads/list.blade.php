@@ -13,9 +13,9 @@
       <tbody>
         @foreach($threads as $thread)
         <tr class='pointer' onclick="location.href='/thread/detail/{{{ $thread->id }}}'">
-          <td>{{{ $thread->title }}}</td>
-          <td>{{{ $thread->created_at }}}</td>
-          <td>?</td>
+          <td>{{ $thread->title }}</td>
+          <td>{{ $thread->created_at }}</td>
+          <td>{{ $thread->writingsCount }}</td>
           <td>
             <form method="POST" action="/thread/delete/{{ $thread->id }}">
               <button type="submit" class='btn btn-default btn-xs'>削除</button>
