@@ -11,6 +11,9 @@ class Writing extends Model
 
     /* レコードを追加 */
     public function insert ($thread_id , $name , $body) {
+      if ($name == '') {
+        $name = '名無しさん';
+      }
       $this->fill(compact('thread_id' , 'name' , 'body'));
       $this->save();
     }
